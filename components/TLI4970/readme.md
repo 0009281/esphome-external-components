@@ -1,3 +1,4 @@
+```yaml
 # example configuration:
 
 sensor:
@@ -8,3 +9,4 @@ sensor:
 spi:
   clk_pin: D5
   miso_pin: D6
+```
