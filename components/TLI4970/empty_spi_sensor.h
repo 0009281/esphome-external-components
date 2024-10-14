@@ -18,8 +18,8 @@ class EmptySPISensor : public sensor::Sensor,
   void setup() override {
     // Initialize the SPI communication
     SPI.begin();
-    pinMode(cs_pin_, OUTPUT);
-    digitalWrite(cs_pin_, HIGH);  // Ensure the CS pin is high when idle
+//    pinMode(cs_pin_, OUTPUT);
+//    digitalWrite(cs_pin_, HIGH);  // Ensure the CS pin is high when idle
   }
 
  void update() override {
