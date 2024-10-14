@@ -7,7 +7,10 @@
 namespace esphome {
 namespace empty_spi_sensor {
 
-class TLI4970Component : public PollingComponent, public Sensor {
+class EmptySPISensor : public sensor::Sensor,
+                       public PollingComponent,
+                       public spi::SPIDevice<spi::BIT_ORDER_MSB_FIRST, spi::CLOCK_POLARITY_LOW, spi::CLOCK_PHASE_LEADING,
+                                            spi::DATA_RATE_1KHZ> {
 
  public:
   void setup() override {
