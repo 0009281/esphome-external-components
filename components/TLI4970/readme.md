@@ -1,4 +1,3 @@
-```yaml
 # example configuration:
 
 sensor:
