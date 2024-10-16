@@ -15,23 +15,9 @@ class EmptySPISensor : public sensor::Sensor,
                                             spi::DATA_RATE_1KHZ> {
 
  public:
-  void setup() override {
-  }
+  void setup() override;
 
- void update() override {
-    // Begin communication with the TLI4970 sensor
-    digitalWrite(cs_pin_, LOW);  // Select the sensor
-    delayMicroseconds(1);        // Small delay for stability
-
-    uint16_t sensor_data = SPI.transfer16(0x0000);  // Read the data from the sensor
-    digitalWrite(cs_pin_, HIGH); // Deselect the sensor
-
-    float current_value = parse_current(sensor_data);
-
-    // Publish the current sensor value to ESPHome
-    ESP_LOGD("TLI4970", "Current: %.2f A", current_value);
-    publish_state(current_value);
-  }
+ void update() override;
 
   void loop() override;
   void dump_config() override;
