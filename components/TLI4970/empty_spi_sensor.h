@@ -6,6 +6,9 @@
 #include "esphome/components/spi/spi.h"
 #include "esphome/core/defines.h"
 
+#define TLI4970_CURRENT_OFFSET		4096
+#define TLI4970_CURRENT_DIVIDER		80.0
+
 namespace esphome {
 namespace empty_spi_sensor {
 
@@ -27,7 +30,8 @@ class EmptySPISensor : public sensor::Sensor,
 
   float parse_current(uint16_t data) {
     // Extract the current value from the 12-bit data (based on TLI4970 documentation)
-    return static_cast<float>(data & 0x0FFF) * 0.1;  // Convert the raw data to current in Amps
+    //return static_cast<float>(data & 0x0FFF) * 0.1;  // Convert the raw data to current in Amps
+     return static_cast<float>(data & - TLI4970_CURRENT_OFFSET)  / TLI4970_CURRENT_DIVIDER;  // Convert the raw data to current in Amps
   }
 
 };  //class
