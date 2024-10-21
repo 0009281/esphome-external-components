@@ -14,12 +14,11 @@ namespace empty_spi_sensor {
 
 class EmptySPISensor : public sensor::Sensor,
                        public PollingComponent,
-                       public spi::SPIDevice<spi::BIT_ORDER_MSB_FIRST, spi::CLOCK_POLARITY_LOW, spi::CLOCK_PHASE_LEADING,
+                       public spi::SPIDevice<spi::BIT_ORDER_MSB_FIRST, spi::CLOCK_POLARITY_HIGH, spi::CLOCK_PHASE_LEADING,
                                             spi::DATA_RATE_1KHZ> {
 
  public:
 
-  EmptySPISensor(int cs_pin) : PollingComponent(1000), cs_pin_(cs_pin) {}
   void setup() override;
 
   void update() override;
