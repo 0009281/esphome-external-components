@@ -18,9 +18,11 @@ class EmptySPISensor : public sensor::Sensor,
                                             spi::DATA_RATE_1KHZ> {
 
  public:
+
+  EmptySPISensor(int cs_pin) : PollingComponent(1000), cs_pin_(cs_pin) {}
   void setup() override;
 
- void update() override;
+  void update() override;
 
   void loop() override;
   void dump_config() override;
